@@ -57,11 +57,32 @@ if (isset($_POST['register'])) {
     <meta charset="UTF-8">
     <title>Register Customer</title>
     <link rel="stylesheet" href="css/style.css">
+    <script>
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
 </head>
 
 <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1>PrimeProperty</h1>
+        </div>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-cta">
+          <button id="theme-toggle" class="theme-toggle" title="Ubah Tema">☀️</button>
+          <a href="index.php" class="btn-secondary">Beranda</a>
+        </div>
+      </div>
+    </header>
 
-    <div class="container">
+    <div class="container" style="max-width: 500px; margin-top: 60px;">
+      <div class="contact-form reveal">
 
         <h2>Register Customer</h2>
 
@@ -75,26 +96,32 @@ if (isset($_POST['register'])) {
 
         <form method="POST">
 
-            Username:<br>
-            <input type="text" name="username" required><br><br>
+            <label>Username</label>
+            <input type="text" name="username" required>
 
-            Password:<br>
-            <input type="password" name="password" required><br><br>
+            <label>Password</label>
+            <input type="password" name="password" required>
 
-            Konfirmasi Password:<br>
-            <input type="password" name="confirm_password" required><br><br>
+            <label>Konfirmasi Password</label>
+            <input type="password" name="confirm_password" required>
 
-            <button type="submit" name="register" class="btn-primary">
-                Register
+            <button type="submit" name="register" class="btn-primary btn-sm" style="width: 100%; margin-top: 20px;">
+                Daftar Sekarang
             </button>
 
+            <p style="margin-top: 20px; text-align: center; color: var(--text-muted);">
+              Sudah punya akun? <a href="login_customer.php" style="color: var(--primary); font-weight: 600;">Login Disini</a>
+            </p>
         </form>
-
-        <br>
-        <a href="login_customer.php">Sudah punya akun? Login</a>
-
+      </div>
     </div>
 
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 PrimeProperty</p>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

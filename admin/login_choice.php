@@ -7,77 +7,75 @@ session_start();
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pilih Login Admin</title>
     <link rel="stylesheet" href="css/admin.css">
+    <script>
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #f4f6f9;
-        }
-
         .choice-container {
             display: flex;
-            gap: 40px;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 40px 0;
         }
 
         .choice-card {
-            background: white;
-            padding: 40px;
-            width: 300px;
+            background: var(--bg-surface);
+            padding: 30px;
+            width: 280px;
             text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: 0.3s;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
         }
 
         .choice-card:hover {
             transform: translateY(-8px);
+            border-color: var(--primary);
         }
 
         .choice-card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .choice-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
             margin-bottom: 20px;
         }
 
-        .choice-card a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            border-radius: 8px;
+        .btn-property, .btn-sales {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
             text-decoration: none;
             color: white;
+            display: inline-block;
+            font-weight: 600;
         }
 
-        .btn-property {
-            background: #2c3e50;
-        }
-
-        .btn-sales {
-            background: #1e3a8a;
-        }
-
-        .btn-property:hover {
-            background: #1a252f;
-        }
-
-        .btn-sales:hover {
-            background: #162c66;
-        }
-
-        @media(max-width: 768px) {
-            .choice-container {
-                flex-direction: column;
-            }
-        }
+        .btn-property { background: var(--primary); }
+        .btn-sales { background: #1e3a8a; }
     </style>
 </head>
 
 <body>
 
+<header style="background: var(--bg-navbar); border-bottom: 1px solid var(--border-color); padding: 12px 0;">
+    <div class="container" style="margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+        <h1 style="font-size: 1.25rem;">Admin Panel</h1>
+        <button id="theme-toggle" class="btn btn-sm btn-primary">☀️</button>
+    </div>
+</header>
+
+<div class="container">
     <div class="choice-container">
-    
 
         <!-- LOGIN PROPERTY -->
         <div class="choice-card">
@@ -116,8 +114,9 @@ session_start();
         </div>
 
     </div>
-    
+</div>
 
+<script src="js/admin_script.js"></script>
 </body>
 
 </html>

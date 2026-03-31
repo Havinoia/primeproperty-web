@@ -14,7 +14,11 @@ include "config/koneksi.php";
     name="description"
     content="Temukan rumah, apartemen, dan properti terbaik dengan harga terbaik hanya di PrimeProperty." />
   <link rel="stylesheet" href="css/style.css" />
-
+  <script>
+    // Prevent theme flash
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
 </head>
 
 <body>
@@ -24,6 +28,11 @@ include "config/koneksi.php";
       <div class="logo">
         <h1>PrimeProperty</h1>
       </div>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav>
         <ul>
           <li><a href="index.php">Beranda</a></li>
@@ -42,6 +51,7 @@ include "config/koneksi.php";
       </nav>
       <ul>
         <div class="nav-cta">
+          <button id="theme-toggle" class="theme-toggle" title="Ubah Tema">☀️</button>
           <?php if (isset($_SESSION['customer'])): ?>
 
             <!-- Jika sudah login -->
@@ -131,6 +141,16 @@ include "config/koneksi.php";
           endwhile;
         endif;
         ?>
+
+        <?php if (!isset($_SESSION['customer'])): ?>
+          <div class="blur-content">
+            <h3 class="reveal">Temukan Detail Properti Impian Anda</h3>
+            <p class="reveal" style="margin-bottom: 25px;">Silakan login atau daftar untuk melihat detail lengkap properti kami.</p>
+            <div class="reveal">
+              <a href="login_customer.php" class="btn-primary">Masuk Sekarang</a>
+            </div>
+          </div>
+        <?php endif; ?>
 
       </div>
 

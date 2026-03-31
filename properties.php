@@ -67,6 +67,10 @@ $query = mysqli_query($conn, $sql);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daftar Properti - PrimeProperty</title>
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
 </head>
 
 <body>
@@ -78,6 +82,11 @@ $query = mysqli_query($conn, $sql);
       <div class="logo">
         <h1>PrimeProperty</h1>
       </div>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
       <nav>
         <ul>
@@ -97,10 +106,11 @@ $query = mysqli_query($conn, $sql);
       </nav>
 
       <div class="nav-cta">
+        <button id="theme-toggle" class="theme-toggle" title="Ubah Tema">☀️</button>
         <?php if (isset($_SESSION['customer'])): ?>
-          <a href="logout_customer.php" class="btn-primary">Logout</a></li>
+          <a href="logout_customer.php" class="btn-primary">Logout</a>
         <?php else: ?>
-          <a href="login_customer.php" class="btn-primary">Login</a></li>
+          <a href="login_customer.php" class="btn-primary">Login</a>
         <?php endif; ?>
       </div>
 

@@ -6,12 +6,21 @@
   <meta charset="UTF-8" />
   <title>Kontak Kami - PrimeProperty</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script>
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
 </head>
 
 <body>
   <header>
     <div class="container">
       <h1>PrimeProperty</h1>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav>
         <ul>
           <li><a href="index.php">Beranda</a></li>
@@ -32,6 +41,7 @@
 
       <ul>
         <div class="nav-cta">
+          <button id="theme-toggle" class="theme-toggle" title="Ubah Tema">☀️</button>
           <?php if (isset($_SESSION['customer'])): ?>
 
             <!-- Jika sudah login -->
